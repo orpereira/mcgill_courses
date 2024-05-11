@@ -1,0 +1,6 @@
+# Olivia Pereira 260985600
+# COMP 206 Assignment 3
+
+#!/bin/bash
+
+gcc minicalc.c -o minicalc -lm

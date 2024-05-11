@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Olivia Pereira
+# Student ID: 260985600
 # COMP 206, Assignment 2
 
 # covering base case

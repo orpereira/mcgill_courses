@@ -1,0 +1,76 @@
+# Olivia Pereira 260985600
+# COMP 206 Assignment 3
+
+#!/bin/bash
+
+FILE="worldcities.csv"
+
+# organizing tasks into cases
+case $1 in
+	# Task 1: find average population of cities in a given country
+	"avg")
+		if [[ $# -ne 2 ]] 
+		then 
+			echo "Error: Must specify exactly one country for avg task."
+        	echo "Usage: ./analyse avg <country_name>"
+			exit 2
+		fi
+
+		awk -F ',' -v country="$2" ' 
+			$4 == country {
+					sum += $8	
+					count++
+			}
+			END {
+				print sum/count
+			}
+			' "$FILE" 		# specifying awk is called on our csv file
+		exit 0
+		;;
+	
+	# Task 2: Find total population of all cities in a given country.
+	"total")
+		if [[ $# -ne 2 ]] 
+		then 
+			echo "Error: Must specify exactly one country for total task."
+        	echo "Usage: ./analyse total <country_name>"
+			exit 3
+		fi
+
+		awk -F',' -v country="$2" ' 
+			$4 == country {
+					sum += $8	
+			}
+			END {
+				print sum
+			}
+			' "$FILE" 		# specifying awk is called on our csv file
+		exit 0
+		;;
+
+	# Task 3: Find difference in population between two given cities
+	"diff")
+		if [[ $# -ne 3 ]] 
+		then 
+			echo "Error: Must specify exactly two cities for diff task."
+        	echo "Usage: ./analyse diff <city1> <city2>"
+			exit 3
+		fi
+
+		awk -F',' -v city1="$2" -v city2="$3" ' 
+			$1 == city1 { pop1 = $8 }
+			$1 == city2 { pop2 = $8 }
+			END {
+				print pop1 - pop2
+			}
+			' "$FILE" 		# specifying awk is called on our csv file
+
+		exit 0
+		;;
+
+	# error handling for all other inputs
+	*)
+		echo "Error: Task must be specified. Supported tasks: avg, total, diff."
+        echo "Usage: ./analyse <task> <additional_arguments>"
+		exit 1
+esac
