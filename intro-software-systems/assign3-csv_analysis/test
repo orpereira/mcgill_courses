@@ -1,0 +1,56 @@
+#!/bin/bash
+
+declare -A test_cases=(
+    # functional cases
+    ["+ 2 3"]="5, Exit code: 0"
+    ["gcd 4 6 14"]="2, Exit code: 0"
+    ["sqrt 36"]="6.000000, Exit code: 0"
+    ["sqrt 1.0"]="1.000000, Exit code: 0"
+    ["anagram brainy binary"]="true, Exit code: 0"
+
+    # catching all exit codes
+    [" "]=", Exit code: 1"
+    ["+"]=", Exit code: 1"
+
+    ["notafunction 2 3"]=", Exit code: 2"
+
+    ["+ 1"]=", Exit code: 3"
+    ["+ 1 2 3"]=", Exit code: 3"
+    ["anagram hello"]=", Exit code: 3"
+    ["anagram hello world hi"]=", Exit code: 3"
+    ["sqrt 1 2"]=", Exit code: 3"
+    ["gcd 20"]=", Exit code: 3"
+
+    ["+ 1.0 2"]=", Exit code: 4"
+    ["+ 1 hello"]=", Exit code: 4"
+    ["gcd 2.0 4 6"]=", Exit code: 4"
+    ["gcd 2 hello 6"]=", Exit code: 4"
+    ["sqrt hello"]=", Exit code: 4"
+
+    ["sqrt -5"]=", Exit code: 5"
+
+    ["anagram brainy biNary"]=", Exit code: 6"
+
+    ["gcd 2 4 -6"]=", Exit code: 7"
+
+    # random edge cases
+    ["anagram pneumonoultramicroscopicsilicovolcanoconiosis scopicsilicovolcanoconiosispneumonoultramicro"]="true, Exit code: 0"
+    ["+ 2147483647 1"]='2147483647, Exit code: 8'
+)
+
+for test_case in "${!test_cases[@]}"; do
+    echo "Running test case: $test_case" 
+
+    expected=${test_cases["$test_case"]}
+    output="$(./minicalc $test_case), Exit code: $?"
+
+
+    if [ "$output" = "$expected" ]; then
+        echo Test passed! $'\n'
+    else
+        echo Test failed!
+        echo "Expected: $expected"
+        echo "Output: $output" $'\n'
+    fi
+
+done
