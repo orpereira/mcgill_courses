@@ -1,0 +1,1 @@
+There are instances of identical retweets or quotes tweets that are being counted multiple times. There are seem to be some issues where the same tweet is entered multiple times, but might have a slight correction and was reuploaded.
