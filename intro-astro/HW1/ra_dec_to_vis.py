@@ -45,7 +45,7 @@ def plot_visibility(ra, dec, location, date):
     plt.tight_layout()
 
     # save figure to add to homework file, commented out for homework grading
-    plt.savefig('visibility_plot.png', bbox_inches = 'tight')
+    # plt.savefig('visibility_plot.png', bbox_inches = 'tight')
     
     plt.show()
 
@@ -62,6 +62,4 @@ if __name__ == '__main__':
 
     # create the plot
     plot_visibility(ra, dec, location, date)
-
-
 

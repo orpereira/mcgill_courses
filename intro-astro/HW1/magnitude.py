@@ -24,7 +24,7 @@ def plot_flux_ratios(delta_mags, flux_ratios):
     plt.xlabel('Magnitude Difference')
     plt.ylabel('Flux Ratio')
     plt.title('Flux Ratios vs. Magnitude Difference')
-    plt.yscale('log') # plotting on a log scale to better visualize the data
+    plt.semilogy() # plotting on a log scale to better visualize the data
 
     # save figure to add to homework file, commented out for homework grading
     # plt.savefig('flux_ratios_vs_magnitude_difference.png', bbox_inches = 'tight')
