@@ -6,9 +6,13 @@ a Makefile is included to compile using ``gcc`` as shown in the assignment instr
 To compile and run, do the following on your terminal:
 
 $ make
+
 Or, to compile manually:
+
 $ gcc -o solve_test main_solve.o solve.o -lm
+
 To run the test script, do:
+
 $ ./solve_test
 
 ## Functionality
