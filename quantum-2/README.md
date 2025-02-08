@@ -1,4 +1,4 @@
-# PHYS 457 Coding Project - Part 1
+# PHYS 457 Coding Project - Part 2
 Olivia Pereira 260985600
 
 ## How to compile
@@ -6,12 +6,27 @@ a Makefile is included to compile using ``gcc`` as shown in the assignment instr
 To compile and run, do the following on your terminal:
 
 $ make
+
 Or, to compile manually:
-$ gcc -o solve_test main_solve.o solve.o -lm
-To run the test script, do:
+First, we want to make the solve_test file:
+$ gcc -o solve_test main_solve.c solve.c -lm
+
+To make the deriv_test file:
+$ gcc -o deriv_test main_deriv.c derivatives.c -lm
+
+To make the extremum_test file:
+$ gcc -o extremum_test main_extremum.c extremum.c derivatives.c solve.c -lm
+
+To run each test script, do:
 $ ./solve_test
+$ ./deriv_test
+$ ./extremum_test
+
+To clean all output files created (i.e., remove all .dat and test files), run 
+$ make clean
 
 ## Functionality
+### Part 1
 This will test 5 different functions on ranges [0.0, 5.0] to find their roots:
 1. sin(x) 
 2. x*exp(x) - 3.0
@@ -33,3 +48,12 @@ Note that in solve.c, I've chosen to ``return NAN`` instead of ``exit(0)`` in th
 This is just for illustrative purposes to make sure that main_solve.c shows the functionality of the
 program and can show failure cases without the whole program ending. I will likely change it back to
 ``exit(0)`` once this needs to be used for implementation in the future parts of the project.
+
+## Part 2
+The second part of the project adds functionality to compute derivatives and find function extrema. Running `deriv_test` will generate a file called `deriv_test.dat` with the computed derivates. 
+
+Running `extremum_test` will print the extremum location, value, and curvature at the extremum (serving to indicate whether it is a minimum or a maximum). 
+The following functions are tested: 
+- $x*x - 2.0*x + 1$
+- $1.0/x/x - 2.0/x$ 
+- $1.0/x/x - 1.0/(1.0 + exp(x - 5.0))$
