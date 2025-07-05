@@ -17,7 +17,7 @@ void run_test(double (*func)(double), double x_init)
 
 int main(void)
 {
-    // TD: Declare necessary variables
+    // Declare necessary variables
     double x_init, x_extremum, curvature;
     
     // Test 1
@@ -42,7 +42,7 @@ double test_func1(double x)
 {
     double f;
     f = x*x - 2.0*x + 1;
-    // This is (x-1)^2 which has the minimum at x = 1
+    // (x-1)^2 which has the minimum at x = 1
 
     return f;
 }// test_func1
@@ -51,9 +51,6 @@ double test_func2(double x)
 {
     double f;
     f = 1.0/x/x - 2.0/x;
-    // Here, assume x > 0
-    // You should not set x_init = 0.0 which is a singular point.
-    // A good way to guess x_init is to plot the function
     return f;
 }// test_func2
 
@@ -61,8 +58,5 @@ double test_func3(double x)
 {
     double f;
     f = 1.0/x/x - 1.0/(1.0 + exp(x - 5.0));
-    // Assume x > 0
-    // You should not set x_init = 0.0 which is a singular point.
-    // A good way to guess x_init is to plot the function
     return f;
 }// test_func3
