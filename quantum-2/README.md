@@ -9,10 +9,13 @@ $ make
 
 Or, to compile only one part:
 $ make solve_test
-$ make deriv_text
+$ make deriv_test
 $ make extremum_test
 $ make numerov_test
 $ make schroedinger_test
+
+Or, to compile manually:
+$ gcc -o solve_test main_solve.o solve.o -lm
 
 To run each test script, do:
 $ ./solve_test
